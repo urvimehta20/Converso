@@ -1,3 +1,4 @@
 requests 
 openai
 streamlit
+streamlit_chat
