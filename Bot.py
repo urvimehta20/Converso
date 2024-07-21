@@ -2,19 +2,18 @@ import openai
 import streamlit as st
 from streamlit_chat import message
 
-openai.api_key = st.secrets['api_secret']
+
+openai.api_key = st.secrets["api_secret"]
 
 # This function uses the OpenAI Completion API to generate a 
 # response based on the given prompt. The temperature parameter controls 
 # the randomness of the generated response. A higher temperature will result 
-# in more random responses, 
-# while a lower temperature will result in more predictable responses.
+# in more random responses, while a lower temperature will result in more predictable responses.
 
-#st.image("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmFmM2I1ZTNjMzRjNjhhMzRiNTBjZjQxYmY0ODY1NTJmZDY3MWUwZiZjdD1z/jY1r8EHyk4Ye9KUOUb/giphy.gif")
-st.image("https://media.giphy.com/media/lrhawnngiA74DgpSJu/giphy.gif")
+st.image("https://media.giphy.com/media/lrhawnngiA74DgpSJu/giphy.gif", width=200)
 def generate_response(prompt):
     completions = openai.Completion.create (
-        engine="text-davinci-003",
+        engine="gpt-4o-mini",
         prompt=prompt,
         max_tokens=1024,
         n=1,
@@ -26,7 +25,7 @@ def generate_response(prompt):
     return message
 
 
-st.title("ChatGPT Clone")
+st.title("Converso")
 
 
 if 'generated' not in st.session_state:
@@ -37,7 +36,7 @@ if 'past' not in st.session_state:
 
 
 def get_text():
-    input_text = st.text_input("Please ask me: ", key="input")
+    input_text = st.text_input("Hello, how may I help you? ", key="input")
     return input_text 
 
 
